@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support - Easyhabit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .language-switch {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .language-switch a {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .language-switch .active {
+            background: #667eea;
+            color: white;
+        }
+
+        .language-switch .inactive {
+            color: #666;
+        }
+
+        .language-switch .inactive:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-section h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-section p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-btn:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        /* Troubleshooting Section */
+        .troubleshooting {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .troubleshooting h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .troubleshooting-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .troubleshooting-item h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .troubleshooting-item p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .troubleshooting-item ul {
+            color: #666;
+            margin-left: 1rem;
+        }
+
+        .troubleshooting-item li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #667eea;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .faq-section, .contact-section, .troubleshooting {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index-en.html" class="logo">Easyhabit</a>
+            <ul class="nav-links">
+                <li><a href="index-en.html">Home</a></li>
+                <li><a href="index-en.html#features">Features</a></li>
+                <li><a href="index-en.html#download">Download</a></li>
+                <li><a href="privacy-en.html">Privacy</a></li>
+            </ul>
+            <div class="language-switch">
+                <a href="support.html" class="inactive">中文</a>
+                <a href="support-en.html" class="active">EN</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Technical Support</h1>
+                <p>We're here to help you resolve any issues you encounter while using Easyhabit</p>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How do I get started with Easyhabit?</div>
+                    <div class="faq-answer">
+                        After downloading the app, tap the "+" button to add your first habit. Set the habit name, target frequency, and reminder time, then start recording your progress.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Will my data sync to other devices?</div>
+                    <div class="faq-answer">
+                        Yes, Easyhabit supports iCloud sync. Make sure your devices are signed in with the same Apple ID and enable iCloud sync in settings.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I set up reminder notifications?</div>
+                    <div class="faq-answer">
+                        You can set reminder times when adding or editing habits. You can also manage all notification permissions in settings to ensure the app has permission to send notifications.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I use widgets?</div>
+                    <div class="faq-answer">
+                        Long press on an empty area of your home screen, tap the "+" button in the top left, search for "Easyhabit" and add a widget. You can choose different widget sizes to quickly view and record habits.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I backup my data?</div>
+                    <div class="faq-answer">
+                        Through iCloud sync, your data is automatically backed up to the cloud. You can also export data in settings or use your device's iCloud backup feature.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Troubleshooting Section -->
+            <div class="troubleshooting">
+                <h2>Troubleshooting</h2>
+                
+                <div class="troubleshooting-item">
+                    <h3>App won't launch</h3>
+                    <p>If the app won't start properly, try these solutions:</p>
+                    <ul>
+                        <li>Restart your device</li>
+                        <li>Check if your device has sufficient storage space</li>
+                        <li>Ensure your iOS version meets app requirements</li>
+                        <li>Re-download the app from the App Store</li>
+                    </ul>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <h3>Data sync issues</h3>
+                    <p>If you encounter data sync problems:</p>
+                    <ul>
+                        <li>Check if your network connection is working</li>
+                        <li>Confirm you're signed in with the correct Apple ID</li>
+                        <li>Check iCloud storage space in settings</li>
+                        <li>Try turning iCloud sync off and on again</li>
+                    </ul>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <h3>Notifications not working</h3>
+                    <p>If you're not receiving reminder notifications:</p>
+                    <ul>
+                        <li>Check your device's notification permission settings</li>
+                        <li>Make sure Do Not Disturb mode is not enabled</li>
+                        <li>Check notification settings within the app</li>
+                        <li>Restart your device to refresh notification services</li>
+                    </ul>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <h3>Widget display issues</h3>
+                    <p>If widgets are displaying incorrectly:</p>
+                    <ul>
+                        <li>Remove and re-add the widget</li>
+                        <li>Restart your device</li>
+                        <li>Check if the app is running normally</li>
+                        <li>Update to the latest version of the app</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <h2>Need More Help?</h2>
+                <p>If you can't find the answer to your question here, we're happy to help</p>
+                <div class="contact-buttons">
+                    <a href="mailto:dabufan@gmail.com" class="contact-btn">
+                        📧 Send Email
+                    </a>
+                    <a href="https://github.com/dabufan/Easyhabit/issues" class="contact-btn">
+                        🐛 Report Issue
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="index-en.html">Home</a>
+                <a href="privacy-en.html">Privacy Policy</a>
+                <a href="mailto:dabufan@gmail.com">Contact Us</a>
+            </div>
+            <p>&copy; 2024 Easyhabit. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
