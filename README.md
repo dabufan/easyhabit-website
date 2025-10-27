@@ -1,6 +1,6 @@
-# Easyhabit Website
+# Ehabit Website
 
-This repository contains the official website for Easyhabit - a simple habit tracking app.
+This repository contains the official website for Ehabit - a simple habit tracking app.
 
 ## Website Files
 
