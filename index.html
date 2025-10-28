@@ -193,12 +193,13 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .video-container iframe {
+        .video-container video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            object-fit: cover;
         }
 
         /* Features Section */
@@ -469,13 +470,16 @@
                 <p>观看Ehabit的实际使用效果，了解如何轻松养成好习惯</p>
                 <div class="demo-video">
                     <div class="video-container">
-                        <iframe 
-                            src="https://www.youtube.com/embed/PQ9LNRPdVMI" 
+                        <video 
+                            src="Ehabit.mp4" 
                             title="Ehabit 产品演示" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
+                            autoplay 
+                            loop 
+                            muted 
+                            playsinline
+                            controls>
+                            您的浏览器不支持视频播放。
+                        </video>
                     </div>
                 </div>
             </div>

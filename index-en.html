@@ -193,12 +193,13 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .video-container iframe {
+        .video-container video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            object-fit: cover;
         }
 
         /* Features Section */
@@ -469,13 +470,16 @@
                 <p>Watch Ehabit in action and learn how to build better habits effortlessly</p>
                 <div class="demo-video">
                     <div class="video-container">
-                        <iframe 
-                            src="https://www.youtube.com/embed/2wqSlJJo4H4" 
+                        <video 
+                            src="Ehabit.mp4" 
                             title="Ehabit Product Demo" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
+                            autoplay 
+                            loop 
+                            muted 
+                            playsinline
+                            controls>
+                            Your browser does not support video playback.
+                        </video>
                     </div>
                 </div>
             </div>
