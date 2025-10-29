@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ehabit - 简单习惯养成应用</title>
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" href="Ehabit-icon.png">
+    <link rel="apple-touch-icon" href="Ehabit-icon.png">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:image" content="Ehabit-icon.png">
     <style>
         * {
             margin: 0;
@@ -47,6 +54,15 @@
             font-size: 1.5rem;
             font-weight: bold;
             color: #667eea;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
         }
 
         .nav-links {
@@ -92,6 +108,11 @@
         .language-switch .inactive:hover {
             background: rgba(102, 126, 234, 0.1);
             color: #667eea;
+        }
+
+        main {
+            position: relative;
+            z-index: 10;
         }
 
         /* Hero Section */
@@ -299,6 +320,8 @@
             color: white;
             padding: 40px 0;
             text-align: center;
+            position: relative;
+            z-index: 10;
         }
 
         .footer-links {
@@ -394,6 +417,34 @@
             border-color: #c6cbd1;
         }
 
+        /* Floating Images */
+        .floating-images {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-image {
+            position: absolute;
+            opacity: 1;
+            border-radius: 6px;
+            pointer-events: none;
+            transition: transform 0.3s ease-out;
+            will-change: transform;
+        }
+
+        .floating-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -437,7 +488,10 @@
 <body>
     <header>
         <nav class="container">
-            <div class="logo">Ehabit</div>
+            <div class="logo">
+                <img src="Ehabit-icon.png" alt="Ehabit" class="logo-icon">
+                <span>Ehabit</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#features">功能特色</a></li>
                 <li><a href="#download">下载</a></li>
@@ -451,9 +505,15 @@
         </nav>
     </header>
 
+    <!-- Floating Images Container -->
+    <div class="floating-images" id="floatingImages"></div>
+
     <main>
         <section class="hero">
             <div class="container">
+                <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
+                    <img src="Ehabit-icon.png" alt="Ehabit" style="width: 80px; height: 80px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+                </div>
                 <h1>轻松养成好习惯</h1>
                 <p>简单、直观的习惯追踪应用，帮助你建立积极的生活方式，让改变变得简单而持久。</p>
                 <div class="cta-buttons">
@@ -528,8 +588,9 @@
                 <h2>开始你的习惯养成之旅</h2>
                 <p>在 App Store 下载 Ehabit，开启更美好的生活</p>
                 <div class="download-buttons">
-                    <a href="https://apps.apple.com/app/easyhabit/id6753073630" class="download-btn">
-                        📱 App Store 下载
+                    <a href="https://apps.apple.com/app/easyhabit/id6753073630" class="download-btn" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <img src="Ehabit-icon.png" alt="App Icon" style="width: 24px; height: 24px; border-radius: 6px;">
+                        <span>App Store 下载</span>
                     </a>
                 </div>
             </div>
@@ -572,6 +633,180 @@
                     floatingCard.classList.add('show');
                 }
             });
+
+            // 随机悬浮图片
+            const images = [
+                'asset/IMG_0008.JPG',
+                'asset/IMG_1798.JPG',
+                'asset/IMG_1805.JPG',
+                'asset/IMG_1813 2.JPG',
+                'asset/IMG_1819 2.JPG',
+                'asset/IMG_1951.JPG'
+            ];
+
+            const floatingContainer = document.getElementById('floatingImages');
+            const minImages = 4; // 最少显示的图片数量
+            const imageElements = [];
+
+            function createFloatingImage() {
+                const img = document.createElement('div');
+                img.className = 'floating-image';
+                
+                const imgElement = document.createElement('img');
+                const randomImage = images[Math.floor(Math.random() * images.length)];
+                imgElement.src = randomImage;
+                imgElement.alt = '';
+                
+                // 等待图片加载完成后设置尺寸，保持原始比例
+                imgElement.onload = function() {
+                    const naturalWidth = imgElement.naturalWidth;
+                    const naturalHeight = imgElement.naturalHeight;
+                    const aspectRatio = naturalWidth / naturalHeight;
+                    
+                    // 固定宽度 280px
+                    const width = 280;
+                    const height = width / aspectRatio;
+                    
+                    img.style.width = width + 'px';
+                    img.style.height = height + 'px';
+                    
+                    // 查找不重叠的位置
+                    const position = findNonOverlappingPosition(width, height);
+                    img.style.left = position.x + 'px';
+                    img.style.top = position.y + 'px';
+                };
+                
+                // 图片加载失败时也尝试创建，确保数量
+                imgElement.onerror = function() {
+                    // 尝试使用另一张图片
+                    const retryImage = images[Math.floor(Math.random() * images.length)];
+                    imgElement.src = retryImage;
+                };
+                
+                img.appendChild(imgElement);
+                
+                // 随机动画时长 (20s - 40s)
+                const duration = Math.random() * 20 + 20;
+                img.style.animation = `float ${duration}s infinite ease-in-out`;
+                
+                floatingContainer.appendChild(img);
+                imageElements.push(img);
+                
+                return img;
+            }
+
+            // 检查两个矩形是否重叠
+            function checkOverlap(rect1, rect2) {
+                return !(rect1.right < rect2.left || 
+                        rect1.left > rect2.right || 
+                        rect1.bottom < rect2.top || 
+                        rect1.top > rect2.bottom);
+            }
+
+            // 检查新位置是否与现有图片重叠
+            function findNonOverlappingPosition(width, height) {
+                const maxAttempts = 50;
+                let attempts = 0;
+                
+                while (attempts < maxAttempts) {
+                    const maxX = window.innerWidth - width;
+                    const maxY = window.innerHeight - height;
+                    const x = Math.max(0, Math.random() * maxX);
+                    const y = Math.max(0, Math.random() * maxY);
+                    
+                    const newRect = {
+                        left: x,
+                        top: y,
+                        right: x + width,
+                        bottom: y + height
+                    };
+                    
+                    // 检查是否与现有图片重叠
+                    let overlaps = false;
+                    for (let i = 0; i < imageElements.length; i++) {
+                        const existingImg = imageElements[i];
+                        if (existingImg && existingImg.style.left && existingImg.style.top) {
+                            const existingRect = {
+                                left: parseFloat(existingImg.style.left),
+                                top: parseFloat(existingImg.style.top),
+                                right: parseFloat(existingImg.style.left) + parseFloat(existingImg.style.width || width),
+                                bottom: parseFloat(existingImg.style.top) + parseFloat(existingImg.style.height || height)
+                            };
+                            
+                            if (checkOverlap(newRect, existingRect)) {
+                                overlaps = true;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    if (!overlaps) {
+                        return { x, y };
+                    }
+                    
+                    attempts++;
+                }
+                
+                // 如果尝试多次仍找不到，返回随机位置（至少不会完全重叠）
+                const maxX = window.innerWidth - width;
+                const maxY = window.innerHeight - height;
+                return {
+                    x: Math.max(0, Math.random() * maxX),
+                    y: Math.max(0, Math.random() * maxY)
+                };
+            }
+
+            // 保持最少图片数量的函数
+            function maintainMinImages() {
+                while (imageElements.length < minImages) {
+                    createFloatingImage();
+                }
+            }
+
+            // 创建初始图片
+            for (let i = 0; i < minImages; i++) {
+                setTimeout(() => {
+                    createFloatingImage();
+                }, i * 500);
+            }
+
+            // 添加浮动动画关键帧
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes float {
+                    0%, 100% {
+                        transform: translate(0, 0) rotate(0deg);
+                    }
+                    25% {
+                        transform: translate(30px, -30px) rotate(5deg);
+                    }
+                    50% {
+                        transform: translate(-20px, 20px) rotate(-5deg);
+                    }
+                    75% {
+                        transform: translate(20px, 30px) rotate(3deg);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // 每30秒创建一个新图片，移除一个旧图片（但保持最少4个）
+            setInterval(() => {
+                // 只有当图片数量大于最少数量时，才移除一个
+                if (imageElements.length > minImages) {
+                    const oldImg = imageElements.shift();
+                    if (oldImg && oldImg.parentNode) {
+                        oldImg.parentNode.removeChild(oldImg);
+                    }
+                }
+                // 确保补充到最少数量
+                maintainMinImages();
+            }, 30000);
+
+            // 定期检查并确保最少图片数量（每5秒检查一次）
+            setInterval(() => {
+                maintainMinImages();
+            }, 5000);
         });
     </script>
 </body>
