@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://easyhabit.vercel.app/index.html</loc>
+        <lastmod>2024-12-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="zh-CN" href="https://easyhabit.vercel.app/index.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://easyhabit.vercel.app/index-en.html"/>
+    </url>
+    <url>
+        <loc>https://easyhabit.vercel.app/index-en.html</loc>
+        <lastmod>2024-12-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="zh-CN" href="https://easyhabit.vercel.app/index.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://easyhabit.vercel.app/index-en.html"/>
+    </url>
+    <url>
+        <loc>https://easyhabit.vercel.app/privacy.html</loc>
+        <lastmod>2024-12-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="zh-CN" href="https://easyhabit.vercel.app/privacy.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://easyhabit.vercel.app/privacy-en.html"/>
+    </url>
+    <url>
+        <loc>https://easyhabit.vercel.app/privacy-en.html</loc>
+        <lastmod>2024-12-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="zh-CN" href="https://easyhabit.vercel.app/privacy.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://easyhabit.vercel.app/privacy-en.html"/>
+    </url>
+    <url>
+        <loc>https://easyhabit.vercel.app/support.html</loc>
+        <lastmod>2024-12-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="zh-CN" href="https://easyhabit.vercel.app/support.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://easyhabit.vercel.app/support-en.html"/>
+    </url>
+    <url>
+        <loc>https://easyhabit.vercel.app/support-en.html</loc>
+        <lastmod>2024-12-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="zh-CN" href="https://easyhabit.vercel.app/support.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://easyhabit.vercel.app/support-en.html"/>
+    </url>
+</urlset>
+

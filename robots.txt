@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://easyhabit.vercel.app/sitemap.xml
+
+# Disallow floating images directory (not needed for SEO)
+Disallow: /asset/
+
